@@ -1,6 +1,12 @@
 # HCE TH5 Giữa Kỳ - E-commerce Demo Application
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat-square&logo=github)](https://github.com/marcusnguyen2005/ecommerce-react)
+[![Demo](https://img.shields.io/badge/Demo-Live-green?style=flat-square)](https://ecom.khaizinam.io.vn/)
+
 Ứng dụng demo thương mại điện tử được xây dựng bằng React, TypeScript, và Tailwind CSS. Project này là bài thi giữa kỳ với các tính năng quản lý sản phẩm, danh mục, và hệ thống slug SEO-friendly.
+
+**🌐 Live Demo**: [https://ecom.khaizinam.io.vn/](https://ecom.khaizinam.io.vn/)  
+**📦 GitHub Repository**: [https://github.com/marcusnguyen2005/ecommerce-react](https://github.com/marcusnguyen2005/ecommerce-react)
 
 ## 📋 Mục lục
 
@@ -47,10 +53,10 @@
 
 ## 🚀 Cài đặt
 
-1. **Clone repository** (nếu có):
+1. **Clone repository**:
    ```bash
-   git clone <repository-url>
-   cd hce_th5_giuaky
+   git clone https://github.com/marcusnguyen2005/ecommerce-react.git
+   cd ecommerce-react
    ```
 
 2. **Cài đặt dependencies**:

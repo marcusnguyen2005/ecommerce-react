@@ -198,7 +198,7 @@ const Page2: React.FC = () => {
                     }}
                   />
                 </div>
-                <div className="p-4 text-center">
+                <div className="p-2 text-center">
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     {founder.hoten}
                   </h3>
