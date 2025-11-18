@@ -1,0 +1,43 @@
+// Page2 Styles
+.page2 {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  padding: $spacing-lg;
+
+  .students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: $spacing-md;
+    max-width: 1000px;
+    width: 100%;
+
+    .student-card {
+      height: 300px;
+      border: $border-width solid $border-color;
+      border-radius: $border-radius-lg;
+      padding: $spacing-md;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: $box-shadow;
+
+      img {
+        height: 140px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: $border-radius;
+      }
+
+      h3 {
+        margin: $spacing-md 0 $spacing-xs;
+      }
+
+      p {
+        margin: $spacing-xs 0;
+        color: $text-muted;
+      }
+    }
+  }
+}
+

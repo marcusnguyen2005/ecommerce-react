@@ -1,0 +1,34 @@
+// Home Page Styles
+.home-page {
+  padding: $spacing-lg;
+
+  h3 {
+    margin-bottom: $spacing-md;
+    color: $text-color;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: $spacing-md;
+
+    td {
+      padding: $spacing-sm;
+      border: $border-width solid $border-color;
+    }
+
+    input[type="text"],
+    input[type="checkbox"] {
+      width: 100%;
+      padding: $spacing-xs;
+    }
+  }
+
+  small {
+    display: block;
+    margin-top: $spacing-sm;
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+}
+

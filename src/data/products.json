@@ -1,0 +1,280 @@
+[
+    {
+        "id": "1",
+        "title": "Áo dài Việt Nam",
+        "price": 1099500,
+        "originalPrice": 1374375,
+        "discount": 20,
+        "onSale": true,
+        "description": "Áo dài là một loại trang phục truyền thống của Việt Nam. Áo dài thường được may dài đến chân, với thiết kế ôm sát vòng eo tạo nên vẻ đẹp dịu dàng và quyến rũ cho người mặc.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục truyền thống"],
+        "image": "https://thieuhoa.com.vn/wp-content/uploads/2023/04/XfZj3rf4yYXyGYZNEERfzWpeCfWl12FTLLKosuFf.webp",
+        "rating": {
+            "rate": 3.9,
+            "count": 120
+        }
+    },
+    {
+        "id": "2",
+        "title": "Áo dài truyền thống",
+        "price": 223000,
+        "originalPrice": 278750,
+        "discount": 20,
+        "onSale": true,
+        "description": "Áo dài truyền thống với chất liệu vải mềm mại, thoáng mát, phù hợp cho mọi dịp lễ hội và sự kiện quan trọng.",
+        "category": "Áo",
+        "categories": ["Áo"],
+        "image": "https://thaituan.com/wp-content/uploads/2022/12/ao-dai-viet-nam.jpg",
+        "rating": {
+            "rate": 4.1,
+            "count": 259
+        }
+    },
+    {
+        "id": "3",
+        "title": "Áo dài nam",
+        "price": 559900,
+        "originalPrice": 699875,
+        "discount": 20,
+        "onSale": true,
+        "description": "Áo dài nam với thiết kế thanh lịch, phù hợp cho các dịp lễ tết, cưới hỏi và các sự kiện trang trọng.",
+        "category": "Áo",
+        "categories": ["Áo"],
+        "image": "https://i.etsystatic.com/39192319/r/il/14922a/6470681437/il_1080xN.6470681437_9fjb.jpg",
+        "rating": {
+            "rate": 4.7,
+            "count": 500
+        }
+    },
+    {
+        "id": "4",
+        "title": "Áo tứ thân nữ",
+        "price": 159900,
+        "originalPrice": 199875,
+        "discount": 20,
+        "onSale": true,
+        "description": "Áo tứ thân - Biểu tượng của người phụ nữ Kinh Bắc xưa, mang đậm nét văn hóa truyền thống Việt Nam.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục truyền thống"],
+        "image": "https://file.hstatic.net/200000503583/file/ao-tu-than__3__9b5c85ab54ae421cab488cd0d9b36b9d.jpg",
+        "rating": {
+            "rate": 2.1,
+            "count": 430
+        }
+    },
+    {
+        "id": "5",
+        "title": "Áo tứ thân nam",
+        "price": 6950000,
+        "originalPrice": 8687500,
+        "discount": 20,
+        "onSale": true,
+        "description": "Áo tứ thân nam với thiết kế cổ điển, thể hiện nét đẹp văn hóa dân tộc Việt Nam.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục truyền thống"],
+        "image": "https://namtuyen.com/wp-content/uploads/2023/08/ao-dai-ngu-than-nam-tuyen-tai-chua-thien-mu-hue-6.jpg",
+        "rating": {
+            "rate": 4.6,
+            "count": 400
+        }
+    },
+    {
+        "id": "6",
+        "title": "Khố Ede",
+        "price": 1680000,
+        "originalPrice": 2100000,
+        "discount": 20,
+        "onSale": true,
+        "description": "Khố truyền thống của dân tộc Ede, một trong những trang phục đặc trưng của vùng Tây Nguyên.",
+        "category": "Quần",
+        "categories": ["Quần", "Trang phục dân tộc"],
+        "image": "https://i.bbcosplay.com/16604/do-dan-toc-ede-nam-2.jpg",
+        "rating": {
+            "rate": 3.9,
+            "count": 70
+        }
+    },
+    {
+        "id": "7",
+        "title": "Nón lá",
+        "price": 99900,
+        "description": "Nón lá Việt Nam - biểu tượng văn hóa truyền thống, che nắng che mưa, gắn liền với hình ảnh người phụ nữ Việt.",
+        "category": "Nón",
+        "categories": ["Nón", "Phụ kiện"],
+        "image": "https://madebymaries.com/wp-content/uploads/2021/10/3-1.jpg",
+        "rating": {
+            "rate": 3.0,
+            "count": 400
+        }
+    },
+    {
+        "id": "8",
+        "title": "Áo bà ba, khăn rằn Nam bộ",
+        "price": 109900,
+        "description": "Từ xa xưa, bộ bà ba, khăn rằn đã trở thành trang phục và phụ kiện truyền thống không thể thiếu của người Nam bộ với nét đẹp duyên dáng, mộc mạc như chính con người nơi đây.",
+        "category": "Áo",
+        "categories": ["Áo", "Phụ kiện", "Trang phục Nam bộ"],
+        "image": "https://images2.thanhnien.vn/528068263637045248/2023/4/26/anh-3-img1841-1682506660360886537336.jpeg",
+        "rating": {
+            "rate": 1.9,
+            "count": 100
+        }
+    },
+    {
+        "id": "9",
+        "title": "Áo dài dân tộc Tày",
+        "price": 640000,
+        "description": "Người Tày là một trong 54 dân tộc ở Việt Nam, thuộc hệ ngôn ngữ Thái - Kadai, sinh sống chủ yếu ở vùng miền núi Đông Bắc nước ta.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục dân tộc"],
+        "image": "https://mediabcb.mediatech.vn/upload/image/202103/medium/27739_trang%20phuc.jpg",
+        "rating": {
+            "rate": 3.3,
+            "count": 203
+        }
+    },
+    {
+        "id": "10",
+        "title": "Áo dân tộc Thái",
+        "price": 1090000,
+        "description": "Trang phục dân tộc Thái mang đậm dấu ấn văn hóa, không chỉ thể hiện sự tinh tế trong thiết kế mà còn chứa đựng những giá trị lịch sử và bản sắc riêng biệt.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục dân tộc"],
+        "image": "https://routine-db.s3.amazonaws.com/prod/media/net-noi-bat-trang-phuc-dan-toc-thai-jpg-odlb.webp",
+        "rating": {
+            "rate": 2.9,
+            "count": 470
+        }
+    },
+    {
+        "id": "11",
+        "title": "Dân tộc Dao đỏ",
+        "price": 1090000,
+        "description": "Người Dao mặc đồ rất đa dạng, nhưng lúc nào cũng phải cáo dài yếm, dây lưng, xà cạp, váy hoặc quần và mũ đội đầu.",
+        "category": "Áo",
+        "categories": ["Áo", "Quần", "Trang phục dân tộc"],
+        "image": "https://file.hstatic.net/200000503583/file/trang-phuc-dan-toc-dao-3_4dae1a3cc6be4e50a960796515e1f3c0.jpg",
+        "rating": {
+            "rate": 4.8,
+            "count": 319
+        }
+    },
+    {
+        "id": "12",
+        "title": "Áo dân tộc Cờ tu",
+        "price": 1140000,
+        "description": "Nghề dệt thổ cẩm của dân tộc Cơ-tu đã được đưa vào danh mục Di sản văn hóa phi vật thể quốc gia vào năm 2014.",
+        "category": "Áo",
+        "categories": ["Áo", "Trang phục dân tộc"],
+        "image": "https://bhd.1cdn.vn/2023/12/12/4_hoa_van_co_tu-19_18_58_127.jpg",
+        "rating": {
+            "rate": 4.8,
+            "count": 400
+        }
+    },
+    {
+        "id": "13",
+        "title": "Nón lá cao cấp",
+        "price": 599000,
+        "description": "Nón lá được làm thủ công từ lá cọ, với đường chỉ may tinh tế, tạo nên sản phẩm chất lượng cao.",
+        "category": "Nón",
+        "categories": ["Nón", "Phụ kiện"],
+        "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_t.png",
+        "rating": {
+            "rate": 2.9,
+            "count": 250
+        }
+    },
+    {
+        "id": "14",
+        "title": "Nón lá thêu hoa văn",
+        "price": 999900,
+        "description": "Nón lá với hoa văn thêu tay tinh xảo, thể hiện nét đẹp văn hóa truyền thống Việt Nam.",
+        "category": "Nón",
+        "categories": ["Nón", "Phụ kiện"],
+        "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_t.png",
+        "rating": {
+            "rate": 2.2,
+            "count": 140
+        }
+    },
+    {
+        "id": "15",
+        "title": "Quần dài truyền thống",
+        "price": 569900,
+        "description": "Quần dài truyền thống với chất liệu vải mềm mại, thoáng mát, phù hợp cho mọi lứa tuổi.",
+        "category": "Quần",
+        "categories": ["Quần"],
+        "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png",
+        "rating": {
+            "rate": 2.6,
+            "count": 235
+        }
+    },
+    {
+        "id": "16",
+        "title": "Quần ống rộng",
+        "price": 299500,
+        "description": "Quần ống rộng với thiết kế hiện đại nhưng vẫn giữ được nét truyền thống, thoải mái và phong cách.",
+        "category": "Quần",
+        "categories": ["Quần"],
+        "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+        "rating": {
+            "rate": 2.9,
+            "count": 340
+        }
+    },
+    {
+        "id": "17",
+        "title": "Áo khoác gió",
+        "price": 399900,
+        "description": "Áo khoác gió với chất liệu chống nước, phù hợp cho các hoạt động ngoài trời và du lịch.",
+        "category": "Áo",
+        "categories": ["Áo"],
+        "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png",
+        "rating": {
+            "rate": 3.8,
+            "count": 679
+        }
+    },
+    {
+        "id": "18",
+        "title": "Áo thun cổ tròn",
+        "price": 98500,
+        "description": "Áo thun cổ tròn với chất liệu cotton mềm mại, thoáng mát, phù hợp cho mọi hoạt động hàng ngày.",
+        "category": "Áo",
+        "categories": ["Áo"],
+        "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png",
+        "rating": {
+            "rate": 4.7,
+            "count": 130
+        }
+    },
+    {
+        "id": "19",
+        "title": "Áo sơ mi",
+        "price": 79500,
+        "description": "Áo sơ mi với thiết kế thanh lịch, phù hợp cho công sở và các dịp trang trọng.",
+        "category": "Áo",
+        "categories": ["Áo"],
+        "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png",
+        "rating": {
+            "rate": 4.5,
+            "count": 146
+        }
+    },
+    {
+        "id": "20",
+        "title": "Nón bảo hiểm",
+        "price": 129900,
+        "description": "Nón bảo hiểm với thiết kế an toàn, đạt tiêu chuẩn chất lượng, bảo vệ tốt cho người sử dụng.",
+        "category": "Nón",
+        "categories": ["Nón", "Phụ kiện"],
+        "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png",
+        "rating": {
+            "rate": 3.6,
+            "count": 145
+        }
+    }
+]

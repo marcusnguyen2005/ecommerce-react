@@ -1,0 +1,39 @@
+// Page1 Styles
+.page1 {
+  padding: $spacing-lg;
+
+  h2 {
+    margin-bottom: $spacing-lg;
+    color: $text-color;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: $spacing-md;
+
+    .product-item {
+      border: $border-width solid $border-color;
+      border-radius: $border-radius-lg;
+      padding: $spacing-md;
+      text-align: center;
+      cursor: pointer;
+      transition: $transition-base;
+
+      &:hover {
+        box-shadow: $box-shadow;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+
+      h4 {
+        margin: $spacing-sm 0;
+      }
+    }
+  }
+}
+
