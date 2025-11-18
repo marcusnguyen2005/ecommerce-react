@@ -22,7 +22,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
           return (
             <Link
               key={product.id}
-              to={`/sanpham/${product.id}`}
+              to={`/san-pham/${product.id}`}
               className="flex gap-2 p-2 rounded-md hover:bg-gray-50 transition-colors group"
             >
               <div className="w-16 h-16 flex-shrink-0 bg-gray-100 rounded overflow-hidden">

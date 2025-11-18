@@ -80,7 +80,7 @@ const ListProducts: React.FC = () => {
       title: "BLACK FRIDAY SALE",
       subtitle: "Sự kiện",
       description: "Giảm giá lên đến 50% cho tất cả sản phẩm. Ưu đãi cực sốc chỉ trong tháng này!",
-      link: "/sanpham",
+      link: "/san-pham",
     },
     {
       id: 2,

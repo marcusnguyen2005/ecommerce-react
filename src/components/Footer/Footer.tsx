@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import anhlogo from "../../assets/images/Ten-truong-do-1000x159.png";
+import { useSlugs } from "../../hooks/useSlugUrl";
+import { getSlugSync, getUrlFromSlug } from "../../utils/slugResolver";
+import { toSlug } from "../../utils/slug";
 
 interface Category {
   id: string;
@@ -12,6 +15,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ categories = [] }) => {
+  const slugs = useSlugs();
+  
   // Default categories if not provided
   const defaultCategories: Category[] = [
     { id: "ao", name: "Áo" },
@@ -20,6 +25,16 @@ const Footer: React.FC<FooterProps> = ({ categories = [] }) => {
   ];
 
   const displayCategories = categories.length > 0 ? categories : defaultCategories;
+
+  // Helper function to get category URL
+  const getCategoryUrl = (categoryName: string): string => {
+    const slug = getSlugSync(slugs, "category", categoryName);
+    if (slug) {
+      return getUrlFromSlug(slug);
+    }
+    // Fallback: generate slug from category name
+    return `/danh-muc/${toSlug(categoryName)}`;
+  };
 
   return (
     <footer className="bg-gray-800 text-gray-300 mt-auto mt-4">
@@ -99,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({ categories = [] }) => {
               {displayCategories.map((category) => (
                 <li key={category.id}>
                   <Link
-                    to={`/sanpham?category=${category.id}`}
+                    to={getCategoryUrl(category.name)}
                     className="text-sm hover:text-white transition-colors duration-200 block"
                   >
                     {category.name}

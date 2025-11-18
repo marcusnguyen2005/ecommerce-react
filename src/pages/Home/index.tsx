@@ -65,7 +65,7 @@ const Home: React.FC = () => {
       icon: "🛍️",
       title: "Xem Sản phẩm",
       description: "Khám phá danh sách sản phẩm đa dạng và phong phú",
-      link: "/sanpham",
+      link: "/san-pham",
     },
     {
       icon: "📊",
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
 
           <div className="flex flex-wrap justify-center gap-2">
             <Link
-              to="/sanpham"
+              to="/san-pham"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg"
             >
               Xem Sản phẩm
@@ -212,7 +212,7 @@ const Home: React.FC = () => {
 
           <div className="text-center mt-3">
             <Link
-              to="/sanpham"
+              to="/san-pham"
               className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
             >
               Xem tất cả sản phẩm →

@@ -5,10 +5,24 @@ import ProductList from "../../components/ProductList";
 import FlashSaleSection from "../../components/FlashSaleSection";
 import { mockApi } from "../../apis";
 import { Product } from "../../types";
+import { useSlugs } from "../../hooks/useSlugUrl";
+import { getSlugSync, getUrlFromSlug } from "../../utils/slugResolver";
+import { toSlug } from "../../utils/slug";
 
 const Page1: React.FC = () => {
+  const slugs = useSlugs();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Helper function to get category URL
+  const getCategoryUrl = (categoryName: string): string => {
+    const slug = getSlugSync(slugs, "category", categoryName);
+    if (slug) {
+      return getUrlFromSlug(slug);
+    }
+    // Fallback: generate slug from category name
+    return `/danh-muc/${toSlug(categoryName)}`;
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -55,25 +69,25 @@ const Page1: React.FC = () => {
       icon: "👗",
       title: "Áo dài",
       description: "Trang phục truyền thống thanh lịch và quyến rũ",
-      link: "/sanpham?category=Áo",
+      categoryName: "Áo",
     },
     {
       icon: "👔",
       title: "Áo nam",
       description: "Trang phục nam giới hiện đại và lịch sự",
-      link: "/sanpham?category=Áo",
+      categoryName: "Áo",
     },
     {
       icon: "🧢",
       title: "Nón",
       description: "Phụ kiện thời trang đa dạng và phong phú",
-      link: "/sanpham?category=Nón",
+      categoryName: "Nón",
     },
     {
       icon: "👖",
       title: "Quần",
       description: "Quần áo thời trang chất lượng cao",
-      link: "/sanpham?category=Quần",
+      categoryName: "Quần",
     },
   ];
 
@@ -105,7 +119,7 @@ const Page1: React.FC = () => {
             {features.map((feature, index) => (
               <Link
                 key={index}
-                to={feature.link}
+                to={getCategoryUrl(feature.categoryName)}
                 className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-3 transform hover:-translate-y-1"
               >
                 <div className="text-4xl mb-2 text-center">{feature.icon}</div>
