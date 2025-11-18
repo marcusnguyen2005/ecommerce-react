@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import anhlogo from "../../assets/images/Ten-truong-do-1000x159.png";
+import Footer from "../Footer";
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -11,25 +12,25 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <>
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg sticky top-0 z-50">
+    <div className="w-full overflow-x-hidden">
+      <header className="bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg sticky top-0 z-50 w-full">
         {/* Top Banner */}
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               {/* Logo */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 max-w-[200px] sm:max-w-[250px] md:max-w-[300px]">
                 <Link to="/" className="flex items-center">
                   <img 
                     src={anhlogo} 
                     alt="Logo" 
-                    className="h-16 w-auto object-contain"
+                    className="h-16 w-auto object-contain max-w-full"
                   />
                 </Link>
               </div>
 
               {/* Top Navigation - Desktop */}
-              <nav className="hidden md:flex items-center space-x-1">
+              <nav className="hidden md:flex items-center space-x-1 mt-2">
                 <Link
                   to="/"
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
@@ -41,9 +42,19 @@ const Layout: React.FC = () => {
                   TRANG CHỦ
                 </Link>
                 <Link
-                  to="/trang1"
+                  to="/san-pham"
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive("/trang1")
+                    isActive("/san-pham")
+                      ? "bg-blue-100 text-blue-700"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                  }`}
+                >
+                  SẢN PHẨM
+                </Link>
+                <Link
+                  to="/thoi-trang"
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                    isActive("/thoi-trang")
                       ? "bg-blue-100 text-blue-700"
                       : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                   }`}
@@ -135,10 +146,21 @@ const Layout: React.FC = () => {
                 TRANG CHỦ
               </Link>
               <Link
-                to="/trang1"
+                to="/san-pham"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-2 rounded-md text-sm font-medium ${
-                  isActive("/trang1")
+                  isActive("/san-pham")
+                    ? "bg-blue-100 text-blue-700"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                SẢN PHẨM
+              </Link>
+              <Link
+                to="/thoi-trang"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-2 rounded-md text-sm font-medium ${
+                  isActive("/thoi-trang")
                     ? "bg-blue-100 text-blue-700"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
@@ -167,22 +189,22 @@ const Layout: React.FC = () => {
               {/* Left Menu */}
               <nav className="flex items-center space-x-1">
                 <Link
-                  to="/menu1"
+                  to="/"
                   className="px-4 py-2 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors duration-200"
                 >
-                  Menu 1
+                  Trang chủ
                 </Link>
                 <Link
-                  to="/menu2"
+                  to="/thoi-trang"
                   className="px-4 py-2 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors duration-200"
                 >
-                  Menu 2
+                  Thời trang
                 </Link>
                 <Link
-                  to="/menu3"
+                  to="/ve-chung-toi"
                   className="px-4 py-2 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors duration-200"
                 >
-                  Menu 3
+                  Về chúng tôi
                 </Link>
               </nav>
 
@@ -203,14 +225,8 @@ const Layout: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="text-center text-sm">
-            <p>&copy; 2025 Demo Application. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 };
 

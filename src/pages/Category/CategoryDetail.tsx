@@ -1,51 +1,90 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { mockApi } from "../../apis";
+import { useParams } from "react-router-dom";
+import { mockApi, slugApi } from "../../apis";
 import { Product } from "../../types";
 import ProductList from "../../components/ProductList";
 import CategorySidebar from "../../components/CategorySidebar";
 import ProductSidebar from "../../components/ProductSidebar";
 import FlashSaleSection from "../../components/FlashSaleSection";
 import EventSlider from "../../components/EventSlider";
+import NotFound from "../Error/NotFound";
 
-const ListProducts: React.FC = () => {
+const CategoryDetail: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const [categoryName, setCategoryName] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "all";
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (!slug) {
+        setNotFound(true);
+        setLoading(false);
+        return;
+      }
+
       try {
-        const data = await mockApi.getAll();
-        setProducts(data);
-        setFilteredProducts(data);
+        setLoading(true);
+        // Resolve slug to get category name
+        const slugData = await slugApi.findByPrefixAndSlug("danh-muc", slug);
+        
+        if (!slugData) {
+          setNotFound(true);
+          setLoading(false);
+          return;
+        }
+
+        // Set category name from slug entity_id
+        const resolvedCategoryName = String(slugData.entity_id);
+        setCategoryName(resolvedCategoryName);
+
+        const allProducts = await mockApi.getAll();
+        setProducts(allProducts);
+        
+        // Normalize category name for comparison (remove Vietnamese accents)
+        const normalizeCategory = (name: string): string => {
+          return name
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+        };
+
+        const normalizedCategoryName = normalizeCategory(resolvedCategoryName);
+        
+        const filtered = allProducts.filter((p) => {
+          // Check main category
+          if (p.category) {
+            const normalizedMainCategory = normalizeCategory(p.category);
+            if (normalizedMainCategory === normalizedCategoryName) {
+              return true;
+            }
+          }
+          
+          // Check categories array
+          if (p.categories && p.categories.length > 0) {
+            return p.categories.some((c) => {
+              const normalizedCat = normalizeCategory(c);
+              return normalizedCat === normalizedCategoryName;
+            });
+          }
+          
+          return false;
+        });
+        
+        setFilteredProducts(filtered);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setNotFound(true);
       } finally {
         setLoading(false);
       }
     };
 
     fetchProducts();
-  }, []);
-
-  useEffect(() => {
-    if (selectedCategory === "all") {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter((product) => {
-        const mainCategory = product.category?.toLowerCase();
-        const categories = product.categories?.map((c) => c.toLowerCase()) || [];
-        return (
-          mainCategory === selectedCategory.toLowerCase() ||
-          categories.includes(selectedCategory.toLowerCase())
-        );
-      });
-      setFilteredProducts(filtered);
-    }
-  }, [selectedCategory, products]);
+  }, [slug]);
 
   // Get categories with counts
   const categories = React.useMemo(() => {
@@ -80,7 +119,7 @@ const ListProducts: React.FC = () => {
       title: "BLACK FRIDAY SALE",
       subtitle: "Sự kiện",
       description: "Giảm giá lên đến 50% cho tất cả sản phẩm. Ưu đãi cực sốc chỉ trong tháng này!",
-      link: "/sanpham",
+      link: "/san-pham",
     },
     {
       id: 2,
@@ -100,6 +139,10 @@ const ListProducts: React.FC = () => {
     },
   ];
 
+  if (notFound) {
+    return <NotFound />;
+  }
+
   return (
     <div className="mb-3">
       {/* Flash Sale Section - Full Width */}
@@ -108,10 +151,12 @@ const ListProducts: React.FC = () => {
       <div className="max-w-7xl mx-auto px-3 mb-3">
         <div className="mb-3">
           <h1 className="text-2xl font-bold text-gray-900 mb-1">
-            Danh sách sản phẩm
+            Danh mục: {categoryName || "Tất cả"}
           </h1>
           <p className="text-sm text-gray-600">
-            Khám phá bộ sưu tập trang phục dân tộc Việt Nam
+            {filteredProducts.length > 0 
+              ? `Tìm thấy ${filteredProducts.length} sản phẩm`
+              : "Không tìm thấy sản phẩm nào"}
           </p>
         </div>
 
@@ -143,4 +188,5 @@ const ListProducts: React.FC = () => {
   );
 };
 
-export default ListProducts;
+export default CategoryDetail;
+

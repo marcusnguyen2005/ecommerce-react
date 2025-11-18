@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, useRoutes } from "react-router-dom";
 import { routes } from "./routes";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./styles/tailwind.css";
 import "./styles/common.scss";
 
@@ -11,9 +12,11 @@ const AppRoutes = () => {
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 };
 

@@ -2,17 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BannerSlider from "../../components/BannerSlider";
 import ProductList from "../../components/ProductList";
+import FlashSaleSection from "../../components/FlashSaleSection";
+import EventSlider from "../../components/EventSlider";
 import { mockApi } from "../../apis";
 import { Product } from "../../types";
 
 const Home: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
         const products = await mockApi.getAll();
+        setAllProducts(products);
         // Lấy 8 sản phẩm đầu tiên làm featured
         setFeaturedProducts(products.slice(0, 8));
       } catch (error) {
@@ -61,19 +65,47 @@ const Home: React.FC = () => {
       icon: "🛍️",
       title: "Xem Sản phẩm",
       description: "Khám phá danh sách sản phẩm đa dạng và phong phú",
-      link: "/",
+      link: "/sanpham",
     },
     {
       icon: "📊",
       title: "Báo cáo & Thống kê",
       description: "Theo dõi và phân tích dữ liệu sản phẩm chi tiết",
-      link: "/trang1",
+      link: "/thoi-trang",
     },
     {
       icon: "⚙️",
       title: "Cài đặt Hệ thống",
       description: "Tùy chỉnh và cấu hình hệ thống theo nhu cầu",
-      link: "/trang2",
+      link: "/ve-chung-toi",
+    },
+  ];
+
+  // Events data
+  const events = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&h=400&fit=crop",
+      title: "BLACK FRIDAY SALE",
+      subtitle: "Sự kiện",
+      description: "Giảm giá lên đến 50% cho tất cả sản phẩm. Ưu đãi cực sốc chỉ trong tháng này!",
+      link: "/",
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=400&fit=crop",
+      title: "Mở thêm chuỗi cửa hàng",
+      subtitle: "Tin tức",
+      description: "Chúng tôi vui mừng thông báo mở thêm 5 cửa hàng mới tại các thành phố lớn.",
+      link: "/ve-chung-toi",
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=400&fit=crop",
+      title: "Sản phẩm mới",
+      subtitle: "Bộ sưu tập",
+      description: "Khám phá bộ sưu tập áo dài mới nhất với thiết kế hiện đại và thanh lịch.",
+      link: "/thoi-trang",
     },
   ];
 
@@ -85,6 +117,12 @@ const Home: React.FC = () => {
           <BannerSlider slides={slides} autoPlay={true} interval={5000} />
         </div>
       </section>
+
+      {/* Flash Sale Section - Full Width */}
+      <FlashSaleSection products={allProducts} loading={loading} />
+
+      {/* Events Section */}
+      <EventSlider events={events} />
 
       {/* Features Section */}
       <section className="mb-3">
@@ -133,7 +171,7 @@ const Home: React.FC = () => {
 
           <div className="flex flex-wrap justify-center gap-2">
             <Link
-              to="/"
+              to="/sanpham"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg"
             >
               Xem Sản phẩm
@@ -145,7 +183,7 @@ const Home: React.FC = () => {
               Quản lý Admin
             </Link>
             <Link
-              to="/trang1"
+              to="/thoi-trang"
               className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
             >
               Tìm hiểu thêm
@@ -174,7 +212,7 @@ const Home: React.FC = () => {
 
           <div className="text-center mt-3">
             <Link
-              to="/"
+              to="/sanpham"
               className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
             >
               Xem tất cả sản phẩm →

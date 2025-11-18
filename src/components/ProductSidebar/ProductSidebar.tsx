@@ -13,7 +13,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   title = "Sản phẩm nổi bật",
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-3 sticky top-20">
+    <div className="bg-white rounded-lg shadow-md p-1 sticky top-20">
       <h3 className="font-bold text-base mb-2 text-gray-900">{title}</h3>
       <div className="space-y-2">
         {products.slice(0, 4).map((product) => {

@@ -1,32 +1,85 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { mockApi } from "../../apis";
+import { mockApi, slugApi } from "../../apis";
 import { Product } from "../../types";
 import RatingStars from "../../components/RatingStars";
+import ProductList from "../../components/ProductList";
+import Container from "../../components/Container";
+import NotFound from "../Error/NotFound";
 
 const ProductDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingRelated, setLoadingRelated] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      if (!id) return;
+      if (!slug) {
+        setNotFound(true);
+        setLoading(false);
+        return;
+      }
 
       try {
-        const data = await mockApi.getById(id);
-        setProduct(data);
+        setLoading(true);
+        // Resolve slug to get entityId
+        const slugData = await slugApi.findByPrefixAndSlug("san-pham", slug);
+        
+        if (!slugData) {
+          // If slug not found, check if it's a numeric ID (backward compatibility)
+          if (/^\d+$/.test(slug)) {
+            const data = await mockApi.getById(slug);
+            setProduct(data);
+          } else {
+            setNotFound(true);
+          }
+        } else {
+          // Use entityId from slug
+          const data = await mockApi.getById(slugData.entity_id);
+          setProduct(data);
+        }
       } catch (err: any) {
+        console.error("Error fetching product:", err);
         setError(err.message || "Không thể tải sản phẩm!");
+        setNotFound(true);
       } finally {
         setLoading(false);
       }
     };
 
     fetchProduct();
-  }, [id]);
+  }, [slug]);
+
+  useEffect(() => {
+    const fetchRelatedProducts = async () => {
+      if (!product || !product.category) return;
+
+      setLoadingRelated(true);
+      try {
+        const allProducts = await mockApi.getAll();
+        // Lọc sản phẩm cùng category, loại trừ sản phẩm hiện tại
+        const related = allProducts.filter((p) => {
+          const sameCategory = 
+            p.category?.toLowerCase() === product.category?.toLowerCase() ||
+            p.categories?.some(c => c.toLowerCase() === product.category?.toLowerCase());
+          return sameCategory && String(p.id) !== String(product.id);
+        });
+        // Giới hạn 8 sản phẩm
+        setRelatedProducts(related.slice(0, 8));
+      } catch (err) {
+        console.error("Error fetching related products:", err);
+      } finally {
+        setLoadingRelated(false);
+      }
+    };
+
+    fetchRelatedProducts();
+  }, [product]);
 
   if (loading) {
     return (
@@ -37,6 +90,10 @@ const ProductDetail: React.FC = () => {
         </div>
       </div>
     );
+  }
+
+  if (notFound || (!product && !loading)) {
+    return <NotFound />;
   }
 
   if (error || !product) {
@@ -62,7 +119,7 @@ const ProductDetail: React.FC = () => {
   const ratingCount = product.rating?.count || product.rating_count || 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-3 py-3">
+    <Container className="px-4 sm:px-6 lg:px-8 py-6">
       <button
         onClick={() => navigate(-1)}
         className="mb-6 flex items-center text-blue-600 hover:text-blue-800 transition-colors"
@@ -84,13 +141,13 @@ const ProductDetail: React.FC = () => {
       </button>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 lg:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-6 lg:p-10 xl:p-12">
           {/* Product Image */}
-          <div className="flex items-center justify-center bg-gray-50 rounded-lg p-4">
+          <div className="flex items-center justify-center bg-gray-50 rounded-lg p-6 lg:p-8">
             <img
               src={product.image}
               alt={product.title}
-              className="max-w-full h-auto max-h-[500px] object-contain rounded-lg"
+              className="max-w-full h-auto max-h-[600px] lg:max-h-[700px] object-contain rounded-lg"
               onError={(e) => {
                 (e.target as HTMLImageElement).src =
                   "https://via.placeholder.com/500x500?text=No+Image";
@@ -108,7 +165,7 @@ const ProductDetail: React.FC = () => {
             )}
 
             {/* Title */}
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
               {product.title}
             </h1>
 
@@ -119,11 +176,11 @@ const ProductDetail: React.FC = () => {
 
             {/* Price */}
             <div className="flex items-baseline gap-4">
-              <span className="text-4xl font-bold text-red-600">
+              <span className="text-4xl lg:text-5xl xl:text-6xl font-bold text-red-600">
                 {product.price.toLocaleString("vi-VN")}₫
               </span>
               {product.price > 100 && (
-                <span className="text-xl text-gray-500 line-through">
+                <span className="text-xl lg:text-2xl text-gray-500 line-through">
                   {(product.price * 1.25).toLocaleString("vi-VN")}₫
                 </span>
               )}
@@ -224,7 +281,26 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Related Products Section */}
+      {relatedProducts.length > 0 && (
+        <section className="mt-8">
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Bạn có thể quan tâm
+            </h2>
+            <p className="text-sm text-gray-600 mt-1">
+              Các sản phẩm cùng danh mục
+            </p>
+          </div>
+          <ProductList
+            products={relatedProducts}
+            loading={loadingRelated}
+            columns={5}
+          />
+        </section>
+      )}
+    </Container>
   );
 };
 

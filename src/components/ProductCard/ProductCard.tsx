@@ -2,12 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../../types";
 import RatingStars from "../RatingStars";
+import { useSlugUrl } from "../../hooks/useSlugUrl";
+import { toSlug } from "../../utils/slug";
 
 interface ProductCardProps {
   product: Product;
+  productSlug?: string; // Optional: pass slug directly to avoid API call
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, productSlug }) => {
+  const slugUrl = useSlugUrl("product", product.id, product.title);
+  const productUrl = productSlug || slugUrl || `/san-pham/${toSlug(product.title)}`;
+  
   const rating = product.rating?.rate || 0;
   const ratingCount = product.rating?.count || 0;
   const isOnSale = product.onSale && product.originalPrice;
@@ -16,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <Link
-      to={`/sanpham/${product.id}`}
+      to={productUrl}
       className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
     >
       {/* Product Image - Tỉ lệ 1:1.4 */}
@@ -67,10 +73,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Price */}
         {isOnSale ? (
           <div className="flex flex-col">
-            {/* Giá gốc - nhỏ, text-muted, gạch ngang */}
-            <span className="text-xs text-gray-500 line-through mb-0.5">
-              {originalPrice.toLocaleString("vi-VN")}₫
-            </span>
+            {/* Giá gốc - nhỏ, text-muted, gạch ngang + badge */}
+            <div className="flex items-center gap-1 mb-0.5">
+              <span className="text-xs text-gray-500 line-through">
+                {originalPrice.toLocaleString("vi-VN")}₫
+              </span>
+              {product.discount && (
+                <span className="inline-block bg-red-500 text-white text-xs px-1 py-0.5 rounded font-semibold">
+                  -{product.discount}%
+                </span>
+              )}
+            </div>
             {/* Giá sale - màu đỏ hồng */}
             <span className="text-sm font-bold text-pink-600">
               {displayPrice.toLocaleString("vi-VN")}₫

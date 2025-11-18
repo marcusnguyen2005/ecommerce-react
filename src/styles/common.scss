@@ -137,6 +137,11 @@ $breakpoint-xl: 1200px;
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
@@ -145,6 +150,9 @@ body {
   background-color: $bg-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 // Common Utility Classes
@@ -196,5 +204,171 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out;
+}
+
+// Flash Sale Shimmer Effect
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.flash-sale-title {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #fef3c7 25%,
+    #fde68a 50%,
+    #fef3c7 75%,
+    #ffffff 100%
+  );
+  background-size: 2000px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  position: relative;
+  
+  &::before {
+    content: 'FLASH SALE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite linear;
+    filter: blur(2px);
+  }
+}
+
+// Swiper Custom Styles for Flash Sale
+.flash-sale-swiper {
+  padding: 0 45px !important;
+  position: relative;
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #ffffff;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    width: 36px;
+    height: 48px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    &::after {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    
+    &:hover {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5);
+      transform: translateY(-50%) scale(1.05);
+    }
+    
+    &:active {
+      transform: translateY(-50%) scale(0.98);
+    }
+  }
+  
+  .swiper-button-next {
+    right: 5px;
+  }
+  
+  .swiper-button-prev {
+    left: 5px;
+  }
+  
+  .swiper-button-disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: #e5e7eb;
+    box-shadow: none;
+    
+    &:hover {
+      transform: translateY(-50%) scale(1);
+      box-shadow: none;
+      background: #e5e7eb;
+    }
+  }
+  
+  // Custom slide styling
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: auto;
+  }
+}
+
+// Event Slider Custom Styles
+.event-swiper {
+  padding: 0 45px !important;
+  position: relative;
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    width: 36px;
+    height: 48px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    &::after {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    
+    &:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+      transform: translateY(-50%) scale(1.05);
+    }
+    
+    &:active {
+      transform: translateY(-50%) scale(0.98);
+    }
+  }
+  
+  .swiper-button-next {
+    right: 5px;
+  }
+  
+  .swiper-button-prev {
+    left: 5px;
+  }
+  
+  .swiper-button-disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: #e5e7eb;
+    box-shadow: none;
+    
+    &:hover {
+      transform: translateY(-50%) scale(1);
+      box-shadow: none;
+      background: #e5e7eb;
+    }
+  }
 }
 

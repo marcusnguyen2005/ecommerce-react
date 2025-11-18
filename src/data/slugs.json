@@ -1,0 +1,140 @@
+[
+  {
+    "slug": "ao-dai-viet-nam",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "1"
+  },
+  {
+    "slug": "ao-dai-truyen-thong",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "2"
+  },
+  {
+    "slug": "ao-dai-nam",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "3"
+  },
+  {
+    "slug": "ao-tu-than-nu",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "4"
+  },
+  {
+    "slug": "ao-tu-than-nam",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "5"
+  },
+  {
+    "slug": "kho-ede",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "6"
+  },
+  {
+    "slug": "non-la",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "7"
+  },
+  {
+    "slug": "ao-ba-ba-khan-ran-nam-bo",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "8"
+  },
+  {
+    "slug": "ao-dai-dan-toc-tay",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "9"
+  },
+  {
+    "slug": "ao-dan-toc-thai",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "10"
+  },
+  {
+    "slug": "dan-toc-dao-do",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "11"
+  },
+  {
+    "slug": "ao-dan-toc-co-tu",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "12"
+  },
+  {
+    "slug": "non-la-cao-cap",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "13"
+  },
+  {
+    "slug": "non-la-theu-hoa-van",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "14"
+  },
+  {
+    "slug": "quan-dai-truyen-thong",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "15"
+  },
+  {
+    "slug": "quan-ong-rong",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "16"
+  },
+  {
+    "slug": "ao-khoac-gio",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "17"
+  },
+  {
+    "slug": "ao-thun-co-tron",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "18"
+  },
+  {
+    "slug": "ao-so-mi",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "19"
+  },
+  {
+    "slug": "non-bao-hiem",
+    "prefix": "san-pham",
+    "model": "product",
+    "entity_id": "20"
+  },
+  {
+    "slug": "ao",
+    "prefix": "danh-muc",
+    "model": "category",
+    "entity_id": "Áo"
+  },
+  {
+    "slug": "non",
+    "prefix": "danh-muc",
+    "model": "category",
+    "entity_id": "Nón"
+  },
+  {
+    "slug": "quan",
+    "prefix": "danh-muc",
+    "model": "category",
+    "entity_id": "Quần"
+  }
+]
